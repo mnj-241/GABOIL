@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion — GABOIL</title>
+    <!-- Polices Google Fonts : Manrope & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Fichier CSS externe -->
+    <link rel="stylesheet" href="connexion.css">
+</head>
+<body class="login-body">
+
+    <div class="login-wrapper">
+        <!-- PANNEAU GAUCHE : Présentation & Identité -->
+        <aside class="login-left-panel">
+            <div class="left-content">
+                <a href="index.html" class="brand-logo">
+                    <span class="logo-accent">GAB</span>OIL
+                </a>
+                
+                <div class="left-hero-text">
+                    <h1 class="left-title">L'efficacité commence ici.</h1>
+                    <p class="left-desc">
+                        Espace professionnel sécurisé GABOIL. Pilotez vos opérations de caisse et suivez l'activité de votre station en toute sérénité.
+                    </p>
+                </div>
+
+                <div class="left-footer">
+                    <p>&copy; 2026 GABOIL. Tous droits réservés.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PANNEAU DROIT : Formulaire de Connexion -->
+        <main class="login-right-panel">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Connexion</h2>
+                    <p>Accédez à votre compte.</p>
+                </div>
+
+                <!-- Zone de notification dynamique (Erreurs / Succès) -->
+                <div id="alertBox" class="alert-box" style="display: none;" role="alert"></div>
+
+                <!-- Formulaire de connexion -->
+                <form id="loginForm" class="auth-form" novalidate>
+                    
+                    <!-- Champ Adresse e-mail -->
+                    <div class="input-group">
+                        <label for="email">Adresse e-mail</label>
+                        <input type="email" id="email" name="email" placeholder="nom@gaboil.com" required autocomplete="email">
+                    </div>
+
+                    <!-- Champ Mot de passe avec bascule afficher/masquer -->
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label for="password">Mot de passe</label>
+                            <a href="#" id="forgotPasswordLink" class="forgot-link">Mot de passe oublié ?</a>
+                        </div>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+                            <button type="button" id="togglePasswordBtn" class="toggle-password" aria-label="Afficher ou masquer le mot de passe">
+                                <!-- Icône Œil (Afficher) -->
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <!-- Icône Œil barré (Masquer) -->
+                                <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Option Se souvenir de moi -->
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe" checked>
+                            <span>Se souvenir de moi</span>
+                        </label>
+                    </div>
+
+                    <!-- Bouton de connexion -->
+                    <button type="submit" id="loginBtn" class="btn btn-primary">Se connecter</button>
+                </form>
+
+                <!-- Mention discrète accès personnel -->
+                <div class="form-footer-note">
+                    <p>Accès strictement réservé au personnel autorisé.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script JavaScript externe dédié à la connexion -->
+    <script type="module" src="connexion.js"></script>
+</body>
+</html>
