@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Produits — GABOIL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="produits.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL</div>
+            <nav class="sidebar-nav">
+                <a href="accueil.html" class="nav-item">Accueil</a>
+                <a href="caisse.html" class="nav-item">Caisse</a>
+                <a href="produits.html" class="nav-item active">Produits</a>
+                <a href="inventaire.html" class="nav-item">Inventaire</a>
+                <a href="historique.html" class="nav-item">Historique</a>
+                <a href="rapports.html" class="nav-item">Rapports</a>
+                <a href="compte.html" class="nav-item">Mon Compte</a>
+            </nav>
+            <div class="sidebar-footer"><span id="sidebarUserName">...</span></div>
+        </aside>
+
+        <main class="main-content-area">
+            <header class="page-header">
+                <h1>Catalogue des Produits</h1>
+                <p>Ajoutez et gérez les articles vendus dans la station.</p>
+            </header>
+
+            <div id="productAlert" class="alert-box" style="display:none;"></div>
+
+            <div class="produits-grid">
+                <!-- Formulaire Ajout / Édition -->
+                <div class="card">
+                    <h3 id="formTitle">Ajouter un produit</h3>
+                    <form id="productForm" class="product-form">
+                        <input type="hidden" id="productId">
+                        <div class="input-group">
+                            <label for="productName">Nom du produit</label>
+                            <input type="text" id="productName" placeholder="Ex: Essence Super" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="productPrice">Prix de vente unitaire (FCFA)</label>
+                            <input type="number" id="productPrice" placeholder="0" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="productStock">Stock initial</label>
+                            <input type="number" id="productStock" placeholder="0" min="0" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="saveProductBtn" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" id="cancelEditBtn" class="btn btn-outline" style="display:none;">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Liste des Produits -->
+                <div class="card">
+                    <div class="list-header">
+                        <h3>Articles Enregistrés</h3>
+                        <input type="text" id="searchCatalog" placeholder="Rechercher...">
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prix U</th>
+                                    <th>Stock</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                                <tr><td colspan="5" style="text-align:center; color:var(--color-gray);">Chargement...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="produits.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GABOIL — La gestion, maîtrisée</title>
+    <!-- Polices Google Fonts : Manrope (titres) & Inter (textes) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Fichier CSS local -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Barre de Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-accent">GAB</span>OIL
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#accueil" class="nav-link active">Accueil</a>
+                <a href="#fonctionnalites" class="nav-link">Fonctionnalités</a>
+                <a href="#a-propos" class="nav-link">À propos</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="connexion.html" class="btn btn-primary">Se connecter</a>
+                <button class="burger-btn" id="burgerBtn" aria-label="Menu principal">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section Hero (Accueil) -->
+        <section id="accueil" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="badge">Logiciel de gestion de station-service</span>
+                    <h1 class="hero-title">La gestion, <span class="highlight">maîtrisée.</span></h1>
+                    <p class="hero-description">
+                        Une solution numérique pensée pour simplifier les opérations, structurer les données et accompagner la gestion quotidienne de votre activité.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#fonctionnalites" class="btn btn-outline">Découvrir la solution</a>
+                        <a href="connexion.html" class="btn btn-primary">Accéder à mon espace</a>
+                    </div>
+                </div>
+
+                <!-- Visuel décoratif Dashboard -->
+                <div class="hero-visual">
+                    <div class="dashboard-preview">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="preview-title">Aperçu GABOIL OS</div>
+                        </div>
+                        <div class="preview-grid">
+                            <div class="stat-card">
+                                <span class="stat-label">Ventes du jour</span>
+                                <span class="stat-value">2 480 000 FCFA</span>
+                                <span class="stat-trend positive">+12.4%</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-label">Volume Carburant</span>
+                                <span class="stat-value">4 150 L</span>
+                                <span class="stat-trend">Super / Gazole</span>
+                            </div>
+                            <div class="stat-card highlight-card">
+                                <span class="stat-label">Session Caisse</span>
+                                <span class="stat-value">Active</span>
+                                <span class="stat-sub">Piste 01 & 02</span>
+                            </div>
+                        </div>
+                        <div class="preview-chart">
+                            <div class="chart-bar" style="height: 40%"></div>
+                            <div class="chart-bar" style="height: 65%"></div>
+                            <div class="chart-bar" style="height: 50%"></div>
+                            <div class="chart-bar" style="height: 85%"></div>
+                            <div class="chart-bar active" style="height: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Fonctionnalités -->
+        <section id="fonctionnalites" class="features-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Fonctionnalités clés</h2>
+                    <p class="section-subtitle">Un ensemble d'outils puissants conçus spécifiquement pour le travail de caisse et le suivi opérationnel.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 12h-4"/><path d="M18 12h-2"/><path d="M6 12h-2"/></svg>
+                        </div>
+                        <h3>Gestion de caisse</h3>
+                        <p>Saisie fluide des encaissements, clôture de quart précise et contrôle quotidien des écarts de solde.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h3>Suivi des opérations</h3>
+                        <p>Supervision en temps réel des flux de pompes, des jauges de cuve et du mouvement du stock.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h3>Historique des transactions</h3>
+                        <p>Journal complet et traçabilité de tous les paiements, tickets et opérations de caisse.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        </div>
+                        <h3>Rapports & Statistiques</h3>
+                        <p>Synthèses claires pour analyser les performances, les volumes vendus et la rentabilité.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Présentation / À Propos -->
+        <section id="a-propos" class="about-section">
+            <div class="section-container about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">Une gestion plus claire.<br><span class="highlight">Un meilleur suivi.</span></h2>
+                    <p class="about-text">
+                        GABOIL redéfinit la manière dont les stations-services gèrent leurs opérations quotidiennes. En digitalisant les flux de caisse et la remontée des données de piste, nous éliminons les erreurs manuelles et offrons une visibilité totale aux équipes et aux gestionnaires.
+                    </p>
+                    <p class="about-text">
+                        Conçu pour être intuitif et rapide, l'outil s'adapte au rythme intense du travail en station sans ralentir vos collaborateurs.
+                    </p>
+                </div>
+                <div class="about-stats-box">
+                    <div class="box-item">
+                        <span class="box-number">01</span>
+                        <h4>Précision accrue</h4>
+                        <p>Diminution des erreurs de saisie en caisse.</p>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-number">02</span>
+                        <h4>Gain de temps</h4>
+                        <p>Clôtures de journées automatisées et instantanées.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Call To Action (Final) -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2>Prêt à découvrir une nouvelle façon de gérer ?</h2>
+                <p>Accédez dès maintenant à votre espace de gestion personnalisé.</p>
+                <a href="connexion.html" class="btn btn-primary btn-large">Accéder à mon espace</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de Page -->
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="brand-logo">
+                    <span class="logo-accent">GAB</span>OIL
+                </a>
+                <p class="footer-desc">
+                    Solution moderne de gestion opérationnelle et financière pour stations-services et points de distribution.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Navigation</h4>
+                    <a href="#accueil">Accueil</a>
+                    <a href="#fonctionnalites">Fonctionnalités</a>
+                    <a href="#a-propos">À propos</a>
+                </div>
+                <div class="link-group">
+                    <h4>Plateforme</h4>
+                    <a href="connexion.html">Espace Caissière</a>
+                    <a href="connexion.html">Administration</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 GABOIL. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Script Inline minimaliste pour le menu burger mobile -->
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        burgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            burgerBtn.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                burgerBtn.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

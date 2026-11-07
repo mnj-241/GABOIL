@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Superviseur (ADMIN) — GABOIL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar spécifique Admin -->
+        <aside class="sidebar">
+            <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL <span style="font-size:0.7rem; background:rgba(215,25,32,0.2); color:#D71920; padding:0.2rem 0.4rem; border-radius:4px;">Admin</span></div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item active">Supervision & Comptes</a>
+            </nav>
+            <div class="sidebar-footer">
+                <span id="adminName">Chef Superviseur</span>
+                <button id="logoutAdminBtn" class="btn btn-outline" style="margin-top: 0.75rem; width: 100%; font-size: 0.85rem; padding: 0.5rem; border-color: #D71920; color: #ff8a8d;">Déconnexion</button>
+            </div>
+        </aside>
+
+        <!-- Contenu Principal -->
+        <main class="main-content-area">
+            <header class="page-header">
+                <h1>Tableau de Bord — Supervision</h1>
+                <p>Contrôle des comptes caissières et vue d'ensemble de l'activité de la station.</p>
+            </header>
+
+            <div id="adminAlert" class="alert-box" style="display:none;"></div>
+
+            <!-- Grille des statistiques globales -->
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <span class="stat-label">Chiffre d'Affaires Global (Réel)</span>
+                    <span id="adminTotalRevenue" class="stat-val">0 FCFA</span>
+                </div>
+                <div class="card stat-card">
+                    <span class="stat-label">Total Ventes Enregistrées</span>
+                    <span id="adminTotalSales" class="stat-val">0</span>
+                </div>
+                <div class="card stat-card">
+                    <span class="stat-label">Valeur du Stock Restant</span>
+                    <span id="adminStockValue" class="stat-val">0 FCFA</span>
+                </div>
+            </div>
+
+            <!-- Gestion des Comptes Caissières -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <h3>Gestion des Comptes Caissières</h3>
+                <p style="color: var(--color-gray); font-size: 0.9rem; margin-bottom: 1rem;">
+                    Activez ou désactivez l'accès des caissières à l'application.
+                </p>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Rôle</th>
+                                <th>Statut du Compte</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cashiersTableBody">
+                            <tr><td colspan="4" style="text-align:center; color:var(--color-gray);">Chargement des comptes...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Dernières Ventes Globales -->
+            <div class="card">
+                <h3>Journal Global des Ventes (Supervision)</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Heure</th>
+                                <th>Produit</th>
+                                <th>Qté</th>
+                                <th>Total</th>
+                                <th>Caissière</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminSalesTableBody">
+                            <tr><td colspan="6" style="text-align:center; color:var(--color-gray);">Chargement des ventes...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

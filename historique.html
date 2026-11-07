@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des Ventes — GABOIL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="historique.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL</div>
+            <nav class="sidebar-nav">
+                <a href="accueil.html" class="nav-item">Accueil</a>
+                <a href="caisse.html" class="nav-item">Caisse</a>
+                <a href="produits.html" class="nav-item">Produits</a>
+                <a href="inventaire.html" class="nav-item">Inventaire</a>
+                <a href="historique.html" class="nav-item active">Historique</a>
+                <a href="rapports.html" class="nav-item">Rapports</a>
+                <a href="compte.html" class="nav-item">Mon Compte</a>
+            </nav>
+            <div class="sidebar-footer"><span id="sidebarUserName">...</span></div>
+        </aside>
+
+        <main class="main-content-area">
+            <header class="page-header">
+                <h1>Historique & Traçabilité des Ventes</h1>
+                <p>Consultez les transactions et effectuez des corrections tracées si nécessaire.</p>
+            </header>
+
+            <div id="histoAlert" class="alert-box" style="display:none;"></div>
+
+            <div class="card">
+                <div class="filter-bar">
+                    <input type="text" id="searchSale" placeholder="Rechercher par produit ou caissière...">
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Heure</th>
+                                <th>Produit</th>
+                                <th>Qté</th>
+                                <th>Prix U</th>
+                                <th>Total</th>
+                                <th>Caissière</th>
+                                <th>Statut</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTableBody">
+                            <tr><td colspan="8" style="text-align:center; color:var(--color-gray);">Chargement de l'historique...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modale de Correction de Vente -->
+    <div id="correctModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <h3>Corriger / Annuler une vente</h3>
+            <p id="modalSaleInfo" style="margin-bottom:1rem; color:var(--color-gray); font-size:0.9rem;"></p>
+            <div class="input-group" style="margin-bottom:1rem;">
+                <label for="correctionMotif">Motif de la correction / annulation</label>
+                <input type="text" id="correctionMotif" placeholder="Ex: Erreur de saisie de quantité" required>
+            </div>
+            <div class="modal-actions">
+                <button type="button" id="modalCancelBtn" class="btn btn-outline">Fermer</button>
+                <button type="button" id="modalConfirmBtn" class="btn btn-primary" style="background:#D71920;">Confirmer la correction</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="historique.js"></script>
+</body>
+</html>

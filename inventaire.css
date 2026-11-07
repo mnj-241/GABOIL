@@ -1,0 +1,10 @@
+.inventaire-grid { display: grid; grid-template-columns: 380px 1fr; gap: 1.5rem; }
+.restock-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.input-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.input-group label { font-size: 0.85rem; color: var(--color-gray); }
+.input-group input, .input-group select { width: 100%; padding: 0.75rem; background: var(--color-dark); border: 1px solid var(--color-border); border-radius: 6px; color: #fff; font-size: 0.95rem; }
+.input-group input:focus, .input-group select:focus { border-color: var(--color-primary); outline: none; }
+.table-wrapper { max-height: 450px; overflow-y: auto; border: 1px solid var(--color-border); border-radius: 6px; margin-top: 1rem; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+.data-table th, .data-table td { padding: 0.75rem; border-bottom: 1px solid var(--color-border); }
+.data-table th { background: var(--color-surface-card); color: var(--color-gray); position: sticky; top: 0; }

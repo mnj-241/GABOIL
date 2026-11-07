@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapports et Synthèses — GABOIL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="rapports.css">
+    <!-- Bibliothèque CDN SheetJS pour l'export Excel -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL</div>
+            <nav class="sidebar-nav">
+                <a href="accueil.html" class="nav-item">Accueil</a>
+                <a href="caisse.html" class="nav-item">Caisse</a>
+                <a href="produits.html" class="nav-item">Produits</a>
+                <a href="inventaire.html" class="nav-item">Inventaire</a>
+                <a href="historique.html" class="nav-item">Historique</a>
+                <a href="rapports.html" class="nav-item active">Rapports</a>
+                <a href="compte.html" class="nav-item">Mon Compte</a>
+            </nav>
+            <div class="sidebar-footer"><span id="sidebarUserName">...</span></div>
+        </aside>
+
+        <main class="main-content-area">
+            <header class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>Rapports Financiers & Stock</h1>
+                    <p>Synthèse des recettes réelles encaissées et de la valeur du stock.</p>
+                </div>
+                <!-- Bouton d'exportation -->
+                <div>
+                    <button type="button" id="exportExcelBtn" class="btn btn-primary" style="background-color: #2e7d32;">Exporter en Excel</button>
+                    <button type="button" id="exportPdfBtn" class="btn btn-primary" style="background-color: #D71920;">Télécharger le Rapport PDF</button>
+                </div>
+            </header>
+
+            <div class="reports-grid">
+                <div class="card report-card">
+                    <span class="report-label">Recettes Réelles (Aujourd'hui)</span>
+                    <span id="repToday" class="report-val">0 FCFA</span>
+                </div>
+                <div class="card report-card">
+                    <span class="report-label">Recettes Réelles (Ce mois)</span>
+                    <span id="repMonth" class="report-val">0 FCFA</span>
+                </div>
+                <div class="card report-card">
+                    <span class="report-label">Valeur du stock restant</span>
+                    <span id="stockValue" class="report-val">0 FCFA</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Détail des ventes par produit (Quantités & Montants)</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Unités Vendues</th>
+                                <th>Chiffre d'Affaires Réel</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportTableBody">
+                            <tr><td colspan="3" style="text-align:center; color:var(--color-gray);">Calcul des rapports...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="rapports.js"></script>
+</body>
+</html>

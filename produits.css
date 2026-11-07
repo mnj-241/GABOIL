@@ -1,0 +1,17 @@
+.produits-grid { display: grid; grid-template-columns: 380px 1fr; gap: 1.5rem; }
+.product-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.input-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.input-group label { font-size: 0.85rem; color: var(--color-gray); }
+.input-group input { width: 100%; padding: 0.75rem; background: var(--color-dark); border: 1px solid var(--color-border); border-radius: 6px; color: #fff; font-size: 0.95rem; }
+.input-group input:focus { border-color: var(--color-primary); outline: none; }
+.form-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.list-header input { padding: 0.5rem 0.75rem; background: var(--color-dark); border: 1px solid var(--color-border); border-radius: 6px; color: #fff; font-size: 0.85rem; width: 200px; }
+.table-wrapper { max-height: 450px; overflow-y: auto; border: 1px solid var(--color-border); border-radius: 6px; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+.data-table th, .data-table td { padding: 0.75rem; border-bottom: 1px solid var(--color-border); }
+.data-table th { background: var(--color-surface-card); color: var(--color-gray); position: sticky; top: 0; }
+.badge-active { color: #81c784; background: rgba(46,125,50,0.15); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; }
+.badge-inactive { color: #ff8a8d; background: rgba(215,25,32,0.15); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; }
+.action-btn { background: none; border: none; color: var(--color-gray); cursor: pointer; font-size: 0.85rem; margin-right: 0.5rem; }
+.action-btn:hover { color: var(--color-white); }

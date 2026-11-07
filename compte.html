@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte — GABOIL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="compte.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL</div>
+            <nav class="sidebar-nav">
+                <a href="accueil.html" class="nav-item">Accueil</a>
+                <a href="caisse.html" class="nav-item">Caisse</a>
+                <a href="produits.html" class="nav-item">Produits</a>
+                <a href="inventaire.html" class="nav-item">Inventaire</a>
+                <a href="historique.html" class="nav-item">Historique</a>
+                <a href="rapports.html" class="nav-item">Rapports</a>
+                <a href="compte.html" class="nav-item active">Mon Compte</a>
+            </nav>
+            <div class="sidebar-footer"><span id="sidebarUserName">...</span></div>
+        </aside>
+
+        <main class="main-content-area">
+            <header class="page-header">
+                <h1>Mon Compte</h1>
+                <p>Informations sur votre session professionnelle GABOIL.</p>
+            </header>
+
+            <div class="card profile-card">
+                <div class="profile-info">
+                    <div class="info-row">
+                        <span class="info-label">Nom complet :</span>
+                        <span id="profileName" class="info-val">Chargement...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Adresse e-mail :</span>
+                        <span id="profileEmail" class="info-val">Chargement...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Rôle utilisateur :</span>
+                        <span id="profileRole" class="info-val">Chargement...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Statut du compte :</span>
+                        <span id="profileStatus" class="info-val">Actif</span>
+                    </div>
+                </div>
+
+                <!-- Section Confidentialité et Partage -->
+                <div class="card-section" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
+                    <h3 style="font-size: 1.1rem; color: var(--color-white); margin-bottom: 0.75rem;">Confidentialité & Partage</h3>
+                    <p style="color: var(--color-gray); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Autoriser l'autre caissière à consulter votre historique de ventes.
+                    </p>
+                    <label class="checkbox-label" style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+                        <input type="checkbox" id="shareHistoryToggle" style="width: 18px; height: 18px; accent-color: var(--color-primary);">
+                        <span style="font-size: 0.95rem; color: var(--color-white);">Partager mon historique avec l'autre caissière</span>
+                    </label>
+                </div>
+
+                <div class="profile-actions" style="margin-top: 1.5rem;">
+                    <button type="button" id="logoutAccountBtn" class="btn btn-primary" style="background-color: #D71920;">Se déconnecter de la session</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="compte.js"></script>
+</body>
+</html>

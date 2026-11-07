@@ -1,0 +1,594 @@
+/* ==========================================================================
+   GABOIL — Styles de l'Espace Caissière
+   ========================================================================== */
+
+:root {
+    --color-primary: #D71920;
+    --color-primary-hover: #b51218;
+    --color-dark: #111114;
+    --color-surface: #18181c;
+    --color-surface-card: #202025;
+    --color-white: #FFFFFF;
+    --color-gray: #77777D;
+    --color-gray-light: #F4F4F6;
+    --color-border: #2A2A30;
+    --color-border-light: #E0E0E6;
+
+    --font-heading: 'Manrope', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+
+    --transition: all 0.2s ease-in-out;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    background-color: var(--color-dark);
+    color: var(--color-gray-light);
+}
+
+/* ==========================================================================
+   En-tête de la Caisse
+   ========================================================================== */
+
+.caisse-header {
+    background-color: rgba(24, 24, 28, 0.95);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-logo {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-white);
+}
+
+.logo-accent {
+    color: var(--color-primary);
+}
+
+.header-badge {
+    background-color: rgba(215, 25, 32, 0.15);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    border: 1px solid rgba(215, 25, 32, 0.3);
+}
+
+.user-session-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.session-label {
+    color: var(--color-gray);
+}
+
+.session-name {
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+.btn-logout {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-gray-light);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-logout:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ==========================================================================
+   Zone de Notification / Alertes
+   ========================================================================== */
+
+.caisse-alert {
+    max-width: 1440px;
+    margin: 1rem auto 0;
+    padding: 0.85rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.alert-error {
+    background-color: rgba(215, 25, 32, 0.15);
+    color: #ff8a8d;
+    border: 1px solid rgba(215, 25, 32, 0.3);
+}
+
+.alert-success {
+    background-color: rgba(46, 125, 50, 0.15);
+    color: #81c784;
+    border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+/* ==========================================================================
+   Disposition Principale (2 Colonnes)
+   ========================================================================== */
+
+.caisse-main {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   Gestion des Paiements & Monnaie
+   ========================================================================== */
+
+.payment-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.input-field-group label {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+}
+
+.input-field-group input, .catalog-search input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-dark);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+.input-field-group input:focus, .catalog-search input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.monnaie-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-surface-card);
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+}
+
+.monnaie-label {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+}
+
+.monnaie-value {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #4caf50;
+}
+
+/* ==========================================================================
+   Calculatrice Multicolore
+   ========================================================================== */
+
+.calculator-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-screen input {
+    width: 100%;
+    background-color: var(--color-dark);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-family: monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: right;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+}
+
+.calc-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.calc-btn {
+    padding: 0.85rem 0;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--color-white);
+}
+
+.calc-btn:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+/* Familles de couleurs distinctes pour la calculatrice */
+.calc-btn.btn-num {
+    background-color: #2a2a32;
+    color: var(--color-white);
+}
+
+.calc-btn.btn-op {
+    background-color: #3b3b4f;
+    color: #ff8a8d;
+}
+
+.calc-btn.btn-clear {
+    background-color: #D71920 !important; /* Touche C en rouge officiel */
+    color: var(--color-white);
+}
+
+.calc-btn.btn-enter {
+    background-color: #2e7d32 !important; /* Touche = en vert */
+    color: var(--color-white);
+    grid-row: span 2;
+    height: 100%;
+}
+
+.calc-btn.btn-use {
+    background-color: #1976d2;
+    color: var(--color-white);
+    font-size: 0.85rem;
+}
+
+.zero-btn {
+    grid-column: span 2;
+}
+
+/* ==========================================================================
+   Zone Temporaire des Produits Sélectionnés (Panier)
+   ========================================================================== */
+
+.cart-table-wrapper {
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.cart-table th, .cart-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cart-table th {
+    background-color: var(--color-surface-card);
+    color: var(--color-gray);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+.empty-cart-row td {
+    text-align: center;
+    color: var(--color-gray);
+    font-style: italic;
+    padding: 1.5rem;
+}
+
+.cart-qty-input {
+    width: 60px;
+    padding: 0.3rem;
+    background-color: var(--color-dark);
+    border: 1px solid var(--color-border);
+    color: var(--color-white);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.btn-remove-item {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.cart-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: var(--color-surface-card);
+    border-radius: 6px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.total-row {
+    font-size: 1.2rem;
+    color: var(--color-white);
+}
+
+.total-row span:last-child {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Boutons Généraux
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-primary:disabled {
+    background-color: #33333a;
+    color: var(--color-gray);
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-border);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-gray);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.btn-large {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Catalogue des Produits (Colonne Droite)
+   ========================================================================== */
+
+.catalog-card {
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+}
+
+.catalog-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.products-container {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-right: 0.25rem;
+}
+
+.product-item-card {
+    background-color: var(--color-surface-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.product-item-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.product-info h4 {
+    font-size: 1.05rem;
+    color: var(--color-white);
+    margin-bottom: 0.25rem;
+}
+
+.product-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-gray);
+}
+
+.product-price {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.product-stock.low-stock {
+    color: #ffa726;
+    font-weight: 600;
+}
+
+.product-action-badge {
+    background-color: rgba(215, 25, 32, 0.1);
+    color: var(--color-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(215, 25, 32, 0.2);
+}
+
+.loading-products {
+    text-align: center;
+    color: var(--color-gray);
+    padding: 3rem;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Modale de Confirmation
+   ========================================================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modal-content h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.modal-summary-body {
+    margin-bottom: 1.5rem;
+    max-height: 250px;
+    overflow-y: auto;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-actions .btn {
+    flex: 1;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .caisse-main {
+        grid-template-columns: 1fr;
+    }
+    .catalog-card {
+        height: auto;
+        max-height: 500px;
+    }
+}

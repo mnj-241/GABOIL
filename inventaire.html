@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventaire et Stock — GABOIL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="inventaire.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL</div>
+            <nav class="sidebar-nav">
+                <a href="accueil.html" class="nav-item">Accueil</a>
+                <a href="caisse.html" class="nav-item">Caisse</a>
+                <a href="produits.html" class="nav-item">Produits</a>
+                <a href="inventaire.html" class="nav-item active">Inventaire</a>
+                <a href="historique.html" class="nav-item">Historique</a>
+                <a href="rapports.html" class="nav-item">Rapports</a>
+                <a href="compte.html" class="nav-item">Mon Compte</a>
+            </nav>
+            <div class="sidebar-footer"><span id="sidebarUserName">...</span></div>
+        </aside>
+
+        <main class="main-content-area">
+            <header class="page-header">
+                <h1>Gestion de l'Inventaire</h1>
+                <p>Suivi en temps réel du stock commun et réapprovisionnements.</p>
+            </header>
+
+            <div id="invAlert" class="alert-box" style="display:none;"></div>
+
+            <div class="inventaire-grid">
+                <!-- Formulaire Réapprovisionnement -->
+                <div class="card">
+                    <h3>Réapprovisionner un article</h3>
+                    <form id="restockForm" class="restock-form">
+                        <div class="input-group">
+                            <label for="restockProductSelect">Sélectionner le produit</label>
+                            <select id="restockProductSelect" required>
+                                <option value="">-- Choisir un produit --</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="quantityToAdd">Quantité à ajouter</label>
+                            <input type="number" id="quantityToAdd" min="1" placeholder="Ex: 50" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="restockMotif">Motif / Fournisseur</label>
+                            <input type="text" id="restockMotif" placeholder="Ex: Livraison fournisseur" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Valider l'entrée en stock</button>
+                    </form>
+                </div>
+
+                <!-- État du Stock Actuel -->
+                <div class="card">
+                    <h3>État Actuel du Stock Partagé</h3>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Prix U</th>
+                                    <th>Stock Disponible</th>
+                                    <th>Valeur Potentielle</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTableBody">
+                                <tr><td colspan="4" style="text-align:center; color:var(--color-gray);">Chargement...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="inventaire.js"></script>
+</body>
+</html>
