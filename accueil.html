@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Accueil — GABOIL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,8 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="main-content-area">
-            <header class="page-header">
+        <main class="main-content">
+            <header class="page-header" style="margin-bottom: 1.5rem;">
                 <h1>Bonjour, <span id="welcomeName" class="highlight">...</span></h1>
                 <p>Tableau de bord et aperçu des opérations de la station-service.</p>
             </header>
@@ -49,23 +49,48 @@
                 </div>
             </div>
 
-            <div class="dashboard-grid">
-                <div class="card">
-                    <h3>Alertes Stocks Faibles</h3>
+            <div class="dashboard-grid" style="margin-top: 1.5rem;">
+                <div class="card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-white); margin-bottom: 1rem;">Alertes Stocks Faibles</h3>
                     <div id="lowStockAlerts" class="alert-list">
                         <p class="empty-text">Vérification en cours...</p>
                     </div>
                 </div>
-                <div class="card">
-                    <h3>Accès Rapide</h3>
+                <div class="card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.25rem;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-white); margin-bottom: 1rem;">Accès Rapide</h3>
                     <div class="quick-actions">
-                        <a href="caisse.html" class="btn btn-primary btn-large">Ouvrir l'Espace Caisse</a>
-                        <a href="inventaire.html" class="btn btn-outline btn-large">Gérer l'Inventaire</a>
+                        <a href="caisse.html" class="btn btn-primary btn-large" style="margin-bottom: 0.75rem;">Ouvrir l'Espace Caisse</a>
+                        <a href="inventaire.html" class="btn btn-outline btn-large" style="background: transparent; border: 1px solid var(--color-border); color: #fff; text-align: center; display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 0.9rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Gérer l'Inventaire</a>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <!-- Barre de navigation basse mobile (si intégrée sur l'app) -->
+    <nav class="bottom-nav-bar">
+        <a href="accueil.html" class="bottom-nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Accueil</span>
+        </a>
+        <a href="caisse.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span>Caisse</span>
+        </a>
+        <a href="produits.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <span>Produits</span>
+        </a>
+        <a href="inventaire.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span>Stock</span>
+        </a>
+        <a href="compte.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Compte</span>
+        </a>
+    </nav>
+
     <script type="module" src="accueil.js"></script>
 </body>
 </html>
