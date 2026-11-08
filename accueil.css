@@ -1,5 +1,12 @@
-/* ==========================================================================
-   GABOIL — Mode Responsive & Stabilité Mobile Ultime
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.stat-card { display: flex; flex-direction: column; gap: 0.5rem; }
+.stat-label { font-size: 0.85rem; color: var(--color-gray); }
+.stat-val { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: var(--color-white); }
+.dashboard-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.5rem; }
+.quick-actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.empty-text { color: var(--color-gray); font-style: italic; font-size: 0.9rem; }
+.highlight { color: var(--color-primary); }/* ==========================================================================
+   GABOIL — Styles de la Page d'Accueil (Responsive Universel & Stable)
    ========================================================================== */
 
 :root {
@@ -15,6 +22,8 @@
 
     --font-heading: 'Manrope', -apple-system, sans-serif;
     --font-body: 'Inter', -apple-system, sans-serif;
+
+    --transition: all 0.2s ease-in-out;
 }
 
 *, *::before, *::after {
@@ -30,21 +39,69 @@ html, body {
     background-color: var(--color-dark);
     color: var(--color-gray-light);
     overflow-x: hidden;
-    /* Empêche le contenu d'être caché par la barre fixe en bas */
-    padding-bottom: 80px; 
-    /* Empêche le zoom automatique non désiré sur iOS lors des inputs */
+    /* Empêche le contenu d'être masqué par la barre fixe en bas sur mobile */
+    padding-bottom: 75px; 
     -webkit-text-size-adjust: 100%;
 }
 
-/* Conteneur principal rigide et fluide */
-.app-layout, .main-content, .caisse-main {
-    width: 100%;
+.main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
     max-width: 600px;
     margin: 0 auto;
-    padding: 1rem;
 }
 
-/* Grilles de statistiques stables */
+/* En-tête interne */
+.accueil-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.brand-logo {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--color-white);
+}
+
+.logo-accent {
+    color: var(--color-primary);
+}
+
+.btn-logout {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: #ff8a8d;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* Bannière de bienvenue */
+.welcome-banner {
+    margin-bottom: 1.25rem;
+}
+
+.welcome-banner h2 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-white);
+    margin-bottom: 0.2rem;
+}
+
+.user-role-badge {
+    font-size: 0.8rem;
+    color: #4caf50;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   STOCKS & STATS (Mobile par défaut : Carrés rigides et stables)
+   ========================================================================== */
 .stats-grid { 
     display: grid; 
     grid-template-columns: repeat(2, 1fr); 
@@ -61,7 +118,7 @@ html, body {
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 1rem;
-    aspect-ratio: 1 / 1; /* Format carré stable */
+    aspect-ratio: 1 / 1; /* Verrouille un format carré stable pour éviter les sauts */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -79,14 +136,64 @@ html, body {
     color: var(--color-white); 
 }
 
-/* Tableaux de bord en colonne unique rigide sur mobile */
 .dashboard-grid { 
     display: grid; 
     grid-template-columns: 1fr; 
     gap: 1rem; 
 }
 
-/* Barre de navigation basse universelle (Fixe et Indéfectible) */
+.quick-actions { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+    margin-top: 1rem; 
+}
+
+.empty-text { 
+    color: var(--color-gray); 
+    font-style: italic; 
+    font-size: 0.9rem; 
+}
+
+.highlight { 
+    color: var(--color-primary); 
+}
+
+/* Bouton d'action rapide */
+.quick-action-container {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.9rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 4px 12px rgba(215, 25, 32, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ==========================================================================
+   BARRE DE NAVIGATION BASSE (Fixe et rigide sur mobile)
+   ========================================================================== */
 .bottom-nav-bar {
     position: fixed;
     bottom: 0;
@@ -130,13 +237,55 @@ html, body {
     color: var(--color-white);
 }
 
-/* Utilitaires */
-.empty-text { 
-    color: var(--color-gray); 
-    font-style: italic; 
-    font-size: 0.9rem; 
-}
 
-.highlight { 
-    color: var(--color-primary); 
+/* ==========================================================================
+   MODE PC & GRANDES TABLETTES (À partir de 1024px)
+   Application exacte de ton style de grille flexible et de ton dashboard
+   ========================================================================== */
+@media (min-width: 1024px) {
+    body {
+        padding-bottom: 0; /* Plus de marge basse inutile sur PC */
+    }
+
+    .main-content {
+        max-width: 1440px;
+        padding: 2rem;
+    }
+
+    /* Ton style exact pour les stats grid sur PC */
+    .stats-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+        gap: 1.5rem; 
+        margin-bottom: 2rem; 
+    }
+
+    /* Restitution de la liberté des cartes sur PC (plus de format carré forcé) */
+    .stat-card { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 0.5rem; 
+        aspect-ratio: auto;
+        padding: 1.25rem;
+    }
+
+    .stat-label { 
+        font-size: 0.85rem; 
+    }
+
+    .stat-val { 
+        font-size: 1.75rem; 
+    }
+
+    /* Ton style exact pour le dashboard en 2 colonnes asymétriques */
+    .dashboard-grid { 
+        display: grid; 
+        grid-template-columns: 1.2fr 0.8fr; 
+        gap: 1.5rem; 
+    }
+
+    /* Masquage de la barre de navigation basse sur grand écran PC */
+    .bottom-nav-bar {
+        display: none; 
+    }
 }
