@@ -1,8 +1,142 @@
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-.stat-card { display: flex; flex-direction: column; gap: 0.5rem; }
-.stat-label { font-size: 0.85rem; color: var(--color-gray); }
-.stat-val { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800; color: var(--color-white); }
-.dashboard-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.5rem; }
-.quick-actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
-.empty-text { color: var(--color-gray); font-style: italic; font-size: 0.9rem; }
-.highlight { color: var(--color-primary); }
+/* ==========================================================================
+   GABOIL — Mode Responsive & Stabilité Mobile Ultime
+   ========================================================================== */
+
+:root {
+    --color-primary: #D71920;
+    --color-primary-hover: #b51218;
+    --color-dark: #111114;
+    --color-surface: #18181c;
+    --color-surface-card: #202025;
+    --color-white: #FFFFFF;
+    --color-gray: #77777D;
+    --color-gray-light: #F4F4F6;
+    --color-border: #2A2A30;
+
+    --font-heading: 'Manrope', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    background-color: var(--color-dark);
+    color: var(--color-gray-light);
+    overflow-x: hidden;
+    /* Empêche le contenu d'être caché par la barre fixe en bas */
+    padding-bottom: 80px; 
+    /* Empêche le zoom automatique non désiré sur iOS lors des inputs */
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Conteneur principal rigide et fluide */
+.app-layout, .main-content, .caisse-main {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Grilles de statistiques stables */
+.stats-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.stat-card { 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    gap: 0.5rem; 
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1rem;
+    aspect-ratio: 1 / 1; /* Format carré stable */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stat-label { 
+    font-size: 0.75rem; 
+    color: var(--color-gray); 
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stat-val { 
+    font-family: var(--font-heading); 
+    font-size: 1.5rem; 
+    font-weight: 800; 
+    color: var(--color-white); 
+}
+
+/* Tableaux de bord en colonne unique rigide sur mobile */
+.dashboard-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
+}
+
+/* Barre de navigation basse universelle (Fixe et Indéfectible) */
+.bottom-nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9999;
+    padding: 0 0.5rem;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    flex: 1;
+    height: 100%;
+    transition: color 0.2s ease;
+}
+
+.bottom-nav-item span:first-child {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+}
+
+.bottom-nav-item.active {
+    color: var(--color-primary);
+}
+
+.bottom-nav-item:hover {
+    color: var(--color-white);
+}
+
+/* Utilitaires */
+.empty-text { 
+    color: var(--color-gray); 
+    font-style: italic; 
+    font-size: 0.9rem; 
+}
+
+.highlight { 
+    color: var(--color-primary); 
+}
