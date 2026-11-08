@@ -34,7 +34,7 @@
         <main class="main-content-area" style="padding: 1.5rem;">
             <header class="page-header" style="margin-bottom: 1.5rem;">
                 <h1>Terminal de Caisse</h1>
-                <p>Enregistrement des ventes et calculatrice intégrée.</p>
+                <p>Enregistrement rapide des ventes.</p>
             </header>
 
             <!-- Alerte dynamique -->
@@ -43,7 +43,7 @@
             <!-- Grille principale de la caisse -->
             <div class="caisse-main" style="max-width: 100%; padding: 0;">
                 
-                <!-- COLONNE GAUCHE : Panier, Paiement & Calculatrice -->
+                <!-- COLONNE GAUCHE : Panier & Paiement (Sans calculatrice) -->
                 <div class="left-column">
                     <!-- Panier en cours -->
                     <div class="card">
@@ -84,39 +84,6 @@
                                 <span id="monnaieARendre" class="monnaie-value">0 FCFA</span>
                             </div>
                             <button type="button" id="validateSaleBtn" class="btn btn-primary btn-large" disabled>Valider la vente</button>
-                        </div>
-                    </div>
-
-                    <!-- Calculatrice Tactile Multicolore -->
-                    <div class="card calculator-card">
-                        <h3>Calculatrice Rapide</h3>
-                        <div class="calc-screen">
-                            <input type="text" id="calcDisplay" value="0" readonly>
-                        </div>
-                        <div class="calc-keypad">
-                            <button type="button" class="calc-btn btn-clear" data-action="clear">C</button>
-                            <button type="button" class="calc-btn btn-op" data-action="backspace">⌫</button>
-                            <button type="button" class="calc-btn btn-op" data-op="÷">÷</button>
-                            <button type="button" class="calc-btn btn-op" data-op="*">×</button>
-
-                            <button type="button" class="calc-btn btn-num" data-num="7">7</button>
-                            <button type="button" class="calc-btn btn-num" data-num="8">8</button>
-                            <button type="button" class="calc-btn btn-num" data-num="9">9</button>
-                            <button type="button" class="calc-btn btn-op" data-op="-">-</button>
-
-                            <button type="button" class="calc-btn btn-num" data-num="4">4</button>
-                            <button type="button" class="calc-btn btn-num" data-num="5">5</button>
-                            <button type="button" class="calc-btn btn-num" data-num="6">6</button>
-                            <button type="button" class="calc-btn btn-op" data-op="+">+</button>
-
-                            <button type="button" class="calc-btn btn-num" data-num="1">1</button>
-                            <button type="button" class="calc-btn btn-num" data-num="2">2</button>
-                            <button type="button" class="calc-btn btn-num" data-num="3">3</button>
-                            <button type="button" class="calc-btn btn-enter" data-action="calculate">=</button>
-
-                            <button type="button" class="calc-btn btn-num zero-btn" data-num="0">0</button>
-                            <button type="button" class="calc-btn btn-num" data-num=".">.</button>
-                            <button type="button" id="calcUseBtn" class="calc-btn btn-use" title="Injecter dans Montant Reçu">Utiliser</button>
                         </div>
                     </div>
                 </div>
