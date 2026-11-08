@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GABOIL — Styles de la page de Connexion
+   GABOIL — Styles de la page de Connexion (Optimisé & Responsive)
    ========================================================================== */
 
 :root {
@@ -30,19 +30,23 @@ html, body {
     font-family: var(--font-body);
     background-color: var(--color-dark);
     color: var(--color-dark);
+    overflow-x: hidden;
 }
 
 .login-body {
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .login-wrapper {
     display: flex;
     width: 100vw;
     height: 100vh;
-    min-height: 600px;
+    min-height: 100vh;
 }
 
+/* Panneau de gauche (Image/Marque) */
 .login-left-panel {
     flex: 0 0 45%;
     background-color: var(--color-dark);
@@ -96,6 +100,7 @@ html, body {
     padding-top: 2rem;
 }
 
+/* Panneau de droite (Formulaire) */
 .login-right-panel {
     flex: 0 0 55%;
     background-color: var(--color-white);
@@ -128,6 +133,7 @@ html, body {
     font-size: 1rem;
 }
 
+/* Alertes */
 .alert-box {
     padding: 0.85rem 1rem;
     border-radius: 8px;
@@ -135,6 +141,7 @@ html, body {
     margin-bottom: 1.5rem;
     line-height: 1.4;
     border: 1px solid transparent;
+    display: none;
 }
 
 .alert-error {
@@ -149,6 +156,7 @@ html, body {
     border-color: #C3E6CB;
 }
 
+/* Formulaire d'authentification */
 .auth-form {
     display: flex;
     flex-direction: column;
@@ -189,16 +197,17 @@ html, body {
     width: 100%;
     padding: 0.85rem 1rem;
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    /* 16px minimum pour éviter le zoom automatique agaçant sur iOS/Android */
+    font-size: 1rem; 
     background-color: #FAFAFC;
     border: 1px solid var(--color-border-light);
     border-radius: 8px;
     color: var(--color-dark);
     transition: var(--transition);
+    outline: none;
 }
 
 .input-group input:focus {
-    outline: none;
     border-color: var(--color-primary);
     background-color: var(--color-white);
     box-shadow: 0 0 0 3px rgba(215, 25, 32, 0.08);
@@ -208,6 +217,7 @@ html, body {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .password-wrapper input {
@@ -244,6 +254,7 @@ html, body {
     display: block;
 }
 
+/* Checkbox */
 .checkbox-group {
     display: flex;
     align-items: center;
@@ -267,6 +278,7 @@ html, body {
     cursor: pointer;
 }
 
+/* Boutons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -306,30 +318,48 @@ html, body {
     letter-spacing: 0.2px;
 }
 
+/* ==========================================================================
+   Responsive & Media Queries (Stabilité Mobile)
+   ========================================================================== */
+
 @media (max-width: 992px) {
     .login-wrapper {
         flex-direction: column;
         height: auto;
         min-height: 100vh;
     }
+    
     .login-left-panel {
         flex: none;
-        padding: 3rem 2rem;
+        padding: 2.5rem 1.5rem;
         border-right: none;
         border-bottom: 1px solid var(--color-border);
     }
+    
     .left-content {
         max-width: 100%;
     }
+    
     .brand-logo {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
+    
     .left-hero-text .left-title {
-        font-size: 2.25rem;
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
     }
+
+    .left-hero-text .left-desc {
+        font-size: 0.95rem;
+    }
+
+    .left-footer {
+        padding-top: 1.5rem;
+    }
+    
     .login-right-panel {
         flex: none;
-        padding: 3rem 1.5rem;
+        padding: 2.5rem 1.5rem;
         width: 100%;
     }
 }
@@ -338,13 +368,20 @@ html, body {
     .login-left-panel {
         padding: 2rem 1.25rem;
     }
+    
     .left-hero-text .left-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
+    
     .login-right-panel {
-        padding: 2.5rem 1.25rem;
+        padding: 2rem 1.25rem;
     }
+    
     .form-header h2 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
+    }
+
+    .input-group input {
+        padding: 0.8rem;
     }
 }
