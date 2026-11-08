@@ -1,5 +1,5 @@
 // ==========================================================================
-// GABOIL — Logique Métier de l'Espace Caissière
+// GABOIL — Logique Métier de l'Espace Caissière (Sans calculatrice)
 // ==========================================================================
 
 import { auth, db } from './firebase.js';
@@ -33,11 +33,8 @@ const cartTableBody = document.getElementById('cartTableBody');
 const cartTotalAmountEl = document.getElementById('cartTotalAmount');
 const validateSaleBtn = document.getElementById('validateSaleBtn');
 
-// Calculatrice
-const calcDisplay = document.getElementById('calcDisplay');
 const montantRecuInput = document.getElementById('montantRecu');
 const monnaieARendreEl = document.getElementById('monnaieARendre');
-const calcUseBtn = document.getElementById('calcUseBtn');
 
 // Modale
 const confirmModal = document.getElementById('confirmModal');
@@ -108,7 +105,6 @@ logoutBtn.addEventListener('click', async () => {
 // ==========================================================================
 function initApp() {
     loadProductsCatalog();
-    setupCalculator();
     setupPaymentAndMonnaie();
     setupModalHandlers();
 }
@@ -272,60 +268,7 @@ function updateCartUI() {
 }
 
 // ==========================================================================
-// 5. CALCULATRICE FONCTIONNELLE MULTICOLORE
-// ==========================================================================
-function setupCalculator() {
-    let calcValue = "0";
-
-    const updateDisplay = () => {
-        calcDisplay.value = calcValue;
-    };
-
-    document.querySelectorAll('.calc-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const num = btn.dataset.num;
-            const op = btn.dataset.op;
-            const action = btn.dataset.action;
-
-            if (num !== undefined) {
-                if (calcValue === "0" && num !== ".") {
-                    calcValue = num;
-                } else {
-                    calcValue += num;
-                }
-            } else if (op !== undefined) {
-                calcValue += " " + op + " ";
-            } else if (action === 'clear') {
-                calcValue = "0";
-            } else if (action === 'backspace') {
-                calcValue = calcValue.trim();
-                calcValue = calcValue.length > 1 ? calcValue.slice(0, -1) : "0";
-            } else if (action === 'calculate') {
-                try {
-                    // Évaluation sécurisée basique du calcul
-                    let sanitized = calcValue.replace(/×/g, '*').replace(/÷/g, '/');
-                    let result = Function('"use strict";return (' + sanitized + ')')();
-                    calcValue = String(Math.round(result * 100) / 100);
-                } catch (e) {
-                    calcValue = "Erreur";
-                }
-            }
-            updateDisplay();
-        });
-    });
-
-    // Bouton "Utiliser" pour injecter le résultat dans le champ "Montant reçu"
-    calcUseBtn.addEventListener('click', () => {
-        const val = parseFloat(calcDisplay.value);
-        if (!isNaN(val)) {
-            montantRecuInput.value = val;
-            calculateMonnaie();
-        }
-    });
-}
-
-// ==========================================================================
-// 6. GESTION DES PAIEMENTS ET CALCUL DE LA MONNAIE
+// 5. GESTION DES PAIEMENTS ET CALCUL DE LA MONNAIE
 // ==========================================================================
 function setupPaymentAndMonnaie() {
     montantRecuInput.addEventListener('input', calculateMonnaie);
@@ -350,7 +293,7 @@ function calculateMonnaie() {
 }
 
 // ==========================================================================
-// 7. VALIDATION DES VENTES & TRANSACTIONS FIRESTORE
+// 6. VALIDATION DES VENTES & TRANSACTIONS FIRESTORE
 // ==========================================================================
 validateSaleBtn.addEventListener('click', () => {
     if (cart.length === 0) return;
@@ -453,7 +396,6 @@ async function processSaleTransaction() {
         // Réinitialisation du panier et des champs
         cart = [];
         montantRecuInput.value = "";
-        calcDisplay.value = "0";
         updateCartUI();
 
     } catch (error) {
@@ -465,7 +407,7 @@ async function processSaleTransaction() {
 }
 
 // ==========================================================================
-// 8. UTILITAIRES (Affichage, Sécurité XSS, Formatage)
+// 7. UTILITAIRES (Affichage, Sécurité XSS, Formatage)
 // ==========================================================================
 function showAlert(message, type = 'error') {
     caisseAlert.textContent = message;
