@@ -176,3 +176,34 @@ html, body {
 }
 .alert-error { background-color: rgba(215, 25, 32, 0.15); color: #ff8a8d; border: 1px solid rgba(215, 25, 32, 0.3); }
 .alert-success { background-color: rgba(46, 125, 50, 0.15); color: #81c784; border: 1px solid rgba(46, 125, 50, 0.3); }
+/* ==========================================================================
+   ADAPTATION MOBILE & TABLETTE POUR LA SIDEBAR (< 1024px)
+   ========================================================================== */
+@media (max-width: 1023.98px) {
+    html, body {
+        height: auto;
+        min-height: 100vh;
+        overflow: auto; /* Permet le défilement naturel sur mobile */
+    }
+
+    .app-layout {
+        display: block; /* Désactive le flex plein écran rigide sur mobile */
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    /* Masquage de la sidebar latérale bureau sur mobile */
+    .sidebar {
+        display: none; 
+    }
+
+    /* Adaptation de la zone de contenu principale pour mobile */
+    .main-content-area {
+        width: 100%;
+        height: auto;
+        overflow-y: visible;
+        padding: 1rem;
+        padding-bottom: 90px; /* Espace réservé pour la barre de navigation basse */
+    }
+}
