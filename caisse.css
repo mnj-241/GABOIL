@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GABOIL — Styles de l'Espace Caissière
+   GABOIL — Styles de l'Espace Caissière (Sans calculatrice)
    ========================================================================== */
 
 :root {
@@ -32,6 +32,8 @@ html, body {
     font-family: var(--font-body);
     background-color: var(--color-dark);
     color: var(--color-gray-light);
+    overflow-x: hidden;
+    padding-bottom: 75px; /* Espace réservé pour la barre de navigation fixe sur mobile */
 }
 
 /* ==========================================================================
@@ -235,85 +237,6 @@ html, body {
 }
 
 /* ==========================================================================
-   Calculatrice Multicolore
-   ========================================================================== */
-
-.calculator-card {
-    display: flex;
-    flex-direction: column;
-}
-
-.calc-screen input {
-    width: 100%;
-    background-color: var(--color-dark);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    padding: 0.75rem 1rem;
-    font-family: monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: right;
-    color: var(--color-white);
-    margin-bottom: 1rem;
-}
-
-.calc-keypad {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-}
-
-.calc-btn {
-    padding: 0.85rem 0;
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: var(--transition);
-    color: var(--color-white);
-}
-
-.calc-btn:hover {
-    filter: brightness(1.15);
-    transform: translateY(-1px);
-}
-
-/* Familles de couleurs distinctes pour la calculatrice */
-.calc-btn.btn-num {
-    background-color: #2a2a32;
-    color: var(--color-white);
-}
-
-.calc-btn.btn-op {
-    background-color: #3b3b4f;
-    color: #ff8a8d;
-}
-
-.calc-btn.btn-clear {
-    background-color: #D71920 !important; /* Touche C en rouge officiel */
-    color: var(--color-white);
-}
-
-.calc-btn.btn-enter {
-    background-color: #2e7d32 !important; /* Touche = en vert */
-    color: var(--color-white);
-    grid-row: span 2;
-    height: 100%;
-}
-
-.calc-btn.btn-use {
-    background-color: #1976d2;
-    color: var(--color-white);
-    font-size: 0.85rem;
-}
-
-.zero-btn {
-    grid-column: span 2;
-}
-
-/* ==========================================================================
    Zone Temporaire des Produits Sélectionnés (Panier)
    ========================================================================== */
 
@@ -451,7 +374,7 @@ html, body {
    ========================================================================== */
 
 .catalog-card {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 140px);
     display: flex;
     flex-direction: column;
 }
