@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inventaire et Stock — GABOIL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="app-layout">
+        <!-- Sidebar Bureau -->
         <aside class="sidebar">
             <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL</div>
             <nav class="sidebar-nav">
@@ -26,6 +27,7 @@
             <div class="sidebar-footer"><span id="sidebarUserName">...</span></div>
         </aside>
 
+        <!-- Zone principale -->
         <main class="main-content-area">
             <header class="page-header">
                 <h1>Gestion de l'Inventaire</h1>
@@ -35,7 +37,27 @@
             <div id="invAlert" class="alert-box" style="display:none;"></div>
 
             <div class="inventaire-grid">
-                <!-- Formulaire Réapprovisionnement -->
+                <!-- 1. ÉTAT DU STOCK ACTUEL (EN HAUT — Défilement interne indépendant) -->
+                <div class="card">
+                    <h3>État Actuel du Stock Partagé</h3>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Prix U</th>
+                                    <th>Stock Disponible</th>
+                                    <th>Valeur Potentielle</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTableBody">
+                                <tr><td colspan="4" style="text-align:center; color:var(--color-gray);">Chargement...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. FORMULAIRE DE RÉAPPROVISIONNEMENT (SOUS LA LISTE) -->
                 <div class="card">
                     <h3>Réapprovisionner un article</h3>
                     <form id="restockForm" class="restock-form">
@@ -56,29 +78,42 @@
                         <button type="submit" class="btn btn-primary">Valider l'entrée en stock</button>
                     </form>
                 </div>
-
-                <!-- État du Stock Actuel -->
-                <div class="card">
-                    <h3>État Actuel du Stock Partagé</h3>
-                    <div class="table-wrapper">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Produit</th>
-                                    <th>Prix U</th>
-                                    <th>Stock Disponible</th>
-                                    <th>Valeur Potentielle</th>
-                                </tr>
-                            </thead>
-                            <tbody id="inventoryTableBody">
-                                <tr><td colspan="4" style="text-align:center; color:var(--color-gray);">Chargement...</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
         </main>
     </div>
+
+    <!-- BARRE DE NAVIGATION MOBILE UNIVERSELLE À 7 RUBRIQUES (Routes vérifiées) -->
+    <nav class="bottom-nav-bar">
+        <a href="historique.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            <span>Histo</span>
+        </a>
+        <a href="accueil.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Accueil</span>
+        </a>
+        <a href="caisse.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span>Caisse</span>
+        </a>
+        <a href="produits.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <span>Produits</span>
+        </a>
+        <a href="inventaire.html" class="bottom-nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span>Stock</span>
+        </a>
+        <a href="compte.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Compte</span>
+        </a>
+        <a href="rapports.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <span>Rapports</span>
+        </a>
+    </nav>
+
     <script type="module" src="inventaire.js"></script>
 </body>
 </html>
