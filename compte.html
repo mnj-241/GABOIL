@@ -2,16 +2,193 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mon Compte — GABOIL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="compte.css">
+    <style>
+        /* Ajustements compacts spécifiques pour alléger les blocs sur mobile */
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: var(--font-body, 'Inter', sans-serif);
+            background-color: var(--color-dark, #111114);
+            color: var(--color-gray-light, #F4F4F6);
+            overflow-x: hidden;
+            padding-bottom: 70px; /* Espace sécurisé pour la navigation basse */
+            -webkit-text-size-adjust: 100%;
+        }
+        .app-layout {
+            display: block;
+            width: 100%;
+            min-height: 100vh;
+        }
+        .sidebar {
+            display: none !important;
+        }
+        .main-content-area {
+            padding: 0.75rem !important;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-header {
+            margin-bottom: 0.75rem !important;
+        }
+        .page-header h1 {
+            font-size: 1.2rem !important;
+            font-weight: 800;
+            color: var(--color-white, #fff);
+        }
+        .page-header p {
+            font-size: 0.8rem !important;
+            color: var(--color-gray, #77777D);
+        }
+        .card {
+            background-color: var(--color-surface, #18181c);
+            border: 1px solid var(--color-border, #2A2A30);
+            padding: 0.85rem !important;
+            margin-bottom: 0.75rem !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card h3 {
+            font-size: 0.95rem !important;
+            margin-bottom: 0.5rem !important;
+            padding-bottom: 0.3rem !important;
+            color: var(--color-white, #fff);
+            border-bottom: 1px solid var(--color-border, #2A2A30);
+        }
+        .info-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-bottom: 0.6rem;
+        }
+        .info-label {
+            font-size: 0.75rem;
+            color: var(--color-gray, #77777D);
+        }
+        .info-val {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-white, #fff);
+            background: var(--color-dark, #111114);
+            padding: 0.5rem 0.65rem;
+            border-radius: 6px;
+            border: 1px solid var(--color-border, #2A2A30);
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--color-white, #fff);
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.7rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-primary {
+            background-color: var(--color-primary, #D71920);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(215, 25, 32, 0.3);
+        }
+        /* Barre de navigation mobile à 7 éléments compacts */
+        .bottom-nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: var(--color-sidebar, #141417);
+            border-top: 1px solid var(--color-border, #2A2A30);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            padding: 0 4px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
+        }
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray, #77777D);
+            text-decoration: none;
+            font-size: 0.55rem;
+            font-weight: 500;
+            flex: 1;
+            height: 100%;
+            transition: color 0.2s ease;
+            padding: 0 1px;
+        }
+        .nav-icon {
+            width: 18px;
+            height: 18px;
+            margin-bottom: 2px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+        .bottom-nav-item.active {
+            color: var(--color-primary, #D71920);
+        }
+        .bottom-nav-item:hover {
+            color: var(--color-white, #FFFFFF);
+        }
+        /* Mode Ordinateur (≥ 1024px) */
+        @media (min-width: 1024px) {
+            html, body {
+                height: 100vh;
+                overflow: hidden;
+                padding-bottom: 0;
+            }
+            .app-layout {
+                display: flex;
+                width: 100vw;
+                height: 100vh;
+            }
+            .sidebar {
+                display: flex !important;
+                width: 260px;
+                min-width: 260px;
+                background-color: var(--color-sidebar, #141417);
+                border-right: 1px solid var(--color-border, #2A2A30);
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 1.5rem;
+            }
+            .main-content-area {
+                flex: 1;
+                height: 100vh;
+                overflow-y: auto;
+                padding: 2rem !important;
+                max-width: 1440px;
+            }
+            .bottom-nav-bar {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="app-layout">
+        <!-- Sidebar Bureau -->
         <aside class="sidebar">
             <div class="sidebar-brand"><span class="logo-accent">GAB</span>OIL</div>
             <nav class="sidebar-nav">
@@ -23,9 +200,10 @@
                 <a href="rapports.html" class="nav-item">Rapports</a>
                 <a href="compte.html" class="nav-item active">Mon Compte</a>
             </nav>
-            <div class="sidebar-footer"><span id="sidebarUserName">...</span></div>
+            <div class="sidebar-footer"><span id="sidebarUserName" style="font-weight:600; color:#fff; display:block; margin-bottom:0.5rem;">...</span></div>
         </aside>
 
+        <!-- Zone principale de la page Compte -->
         <main class="main-content-area">
             <header class="page-header">
                 <h1>Mon Compte</h1>
@@ -53,23 +231,56 @@
                 </div>
 
                 <!-- Section Confidentialité et Partage -->
-                <div class="card-section" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
-                    <h3 style="font-size: 1.1rem; color: var(--color-white); margin-bottom: 0.75rem;">Confidentialité & Partage</h3>
-                    <p style="color: var(--color-gray); font-size: 0.9rem; margin-bottom: 1rem;">
+                <div class="card-section" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #2A2A30);">
+                    <h3 style="font-size: 0.95rem; color: var(--color-white, #fff); margin-bottom: 0.5rem;">Confidentialité & Partage</h3>
+                    <p style="color: var(--color-gray, #77777D); font-size: 0.8rem; margin-bottom: 0.75rem;">
                         Autoriser l'autre caissière à consulter votre historique de ventes.
                     </p>
-                    <label class="checkbox-label" style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
-                        <input type="checkbox" id="shareHistoryToggle" style="width: 18px; height: 18px; accent-color: var(--color-primary);">
-                        <span style="font-size: 0.95rem; color: var(--color-white);">Partager mon historique avec l'autre caissière</span>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="shareHistoryToggle" style="width: 16px; height: 16px; accent-color: var(--color-primary, #D71920);">
+                        <span>Partager mon historique avec l'autre caissière</span>
                     </label>
                 </div>
 
-                <div class="profile-actions" style="margin-top: 1.5rem;">
-                    <button type="button" id="logoutAccountBtn" class="btn btn-primary" style="background-color: #D71920;">Se déconnecter de la session</button>
+                <div class="profile-actions" style="margin-top: 1rem;">
+                    <button type="button" id="logoutAccountBtn" class="btn btn-primary">Se déconnecter de la session</button>
                 </div>
             </div>
         </main>
     </div>
+
+    <!-- BARRE DE NAVIGATION MOBILE UNIVERSELLE À 7 RUBRIQUES (Routes vérifiées) -->
+    <nav class="bottom-nav-bar">
+        <a href="historique.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            <span>Histo</span>
+        </a>
+        <a href="accueil.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Accueil</span>
+        </a>
+        <a href="caisse.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span>Caisse</span>
+        </a>
+        <a href="produits.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <span>Produits</span>
+        </a>
+        <a href="inventaire.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span>Stock</span>
+        </a>
+        <a href="compte.html" class="bottom-nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Compte</span>
+        </a>
+        <a href="rapports.html" class="bottom-nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <span>Rapports</span>
+        </a>
+    </nav>
+
     <script type="module" src="compte.js"></script>
 </body>
 </html>
