@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GABOIL — Styles de la page Produits (Adaptation Mobile, Tablette & PC)
+   GABOIL — Styles de la page Produits (Compact Mobile & PC)
    ========================================================================== */
 
 :root {
@@ -31,19 +31,16 @@ html, body {
     background-color: var(--color-dark);
     color: var(--color-gray-light);
     overflow-x: hidden;
-    /* Espace réservé en bas sur mobile pour la barre de navigation fixe */
     padding-bottom: 75px; 
     -webkit-text-size-adjust: 100%;
 }
 
-/* Neutralisation stricte du layout bureau sur mobile */
 .app-layout {
     display: block;
     width: 100%;
     min-height: 100vh;
 }
 
-/* Masquage total de la sidebar sur mobile */
 .sidebar {
     display: none !important;
 }
@@ -51,47 +48,74 @@ html, body {
 .main-content, .main-content-area {
     display: flex;
     flex-direction: column;
-    padding: 1.25rem;
+    padding: 0.75rem; /* Réduit pour éviter les grands espaces sur mobile */
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* ==========================================================================
-   VOTRE CSS DE BASE (Intégré et structuré)
-   ========================================================================== */
+.page-header {
+    margin-bottom: 0.75rem;
+}
+
+.page-header h1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-white);
+}
+
+.page-header p {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+}
+
+/* Grille et Cartes plus compactes sur mobile */
 .produits-grid { 
     display: grid; 
-    grid-template-columns: 1fr; /* Par défaut sur mobile : une seule colonne empilée */
-    gap: 1.5rem; 
+    grid-template-columns: 1fr; 
+    gap: 0.75rem; /* Réduit l'espace entre les cartes */
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem; /* Cartes beaucoup moins grosses et plus compactes */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-white);
 }
 
 .product-form { 
     display: flex; 
     flex-direction: column; 
-    gap: 1rem; 
-    margin-top: 1rem; 
+    gap: 0.6rem; /* Formulaire resserré */
+    margin-top: 0.5rem; 
 }
 
 .input-group { 
     display: flex; 
     flex-direction: column; 
-    gap: 0.4rem; 
+    gap: 0.25rem; 
 }
 
 .input-group label { 
-    font-size: 0.85rem; 
+    font-size: 0.75rem; 
     color: var(--color-gray); 
 }
 
 .input-group input { 
     width: 100%; 
-    padding: 0.75rem; 
+    padding: 0.5rem 0.65rem; /* Champs plus fins */
     background: var(--color-dark); 
     border: 1px solid var(--color-border); 
     border-radius: 6px; 
     color: #fff; 
-    font-size: 0.95rem; 
+    font-size: 0.9rem; 
 }
 
 .input-group input:focus { 
@@ -102,31 +126,51 @@ html, body {
 .form-actions { 
     display: flex; 
     gap: 0.5rem; 
-    margin-top: 0.5rem; 
+    margin-top: 0.25rem; 
+}
+
+.btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid var(--color-border);
 }
 
 .list-header { 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    margin-bottom: 1rem; 
+    margin-bottom: 0.75rem; 
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .list-header input { 
-    padding: 0.5rem 0.75rem; 
+    padding: 0.4rem 0.6rem; 
     background: var(--color-dark); 
     border: 1px solid var(--color-border); 
     border-radius: 6px; 
     color: #fff; 
-    font-size: 0.85rem; 
+    font-size: 0.8rem; 
     width: 100%;
-    max-width: 200px; 
+    max-width: 180px; 
 }
 
 .table-wrapper { 
-    max-height: 450px; 
+    max-height: 350px; 
     overflow-y: auto; 
     border: 1px solid var(--color-border); 
     border-radius: 6px; 
@@ -135,18 +179,19 @@ html, body {
 .data-table { 
     width: 100%; 
     border-collapse: collapse; 
-    font-size: 0.9rem; 
+    font-size: 0.85rem; 
     text-align: left; 
 }
 
 .data-table th, .data-table td { 
-    padding: 0.75rem; 
+    padding: 0.5rem; /* Lignes du tableau plus serrées et compactes */
     border-bottom: 1px solid var(--color-border); 
 }
 
 .data-table th { 
     background: var(--color-surface-card); 
     color: var(--color-gray); 
+    font-size: 0.75rem;
     position: sticky; 
     top: 0; 
     z-index: 10;
@@ -155,17 +200,17 @@ html, body {
 .badge-active { 
     color: #81c784; 
     background: rgba(46,125,50,0.15); 
-    padding: 0.2rem 0.5rem; 
+    padding: 0.15rem 0.4rem; 
     border-radius: 4px; 
-    font-size: 0.75rem; 
+    font-size: 0.7rem; 
 }
 
 .badge-inactive { 
     color: #ff8a8d; 
     background: rgba(215,25,32,0.15); 
-    padding: 0.2rem 0.5rem; 
+    padding: 0.15rem 0.4rem; 
     border-radius: 4px; 
-    font-size: 0.75rem; 
+    font-size: 0.7rem; 
 }
 
 .action-btn { 
@@ -173,31 +218,26 @@ html, body {
     border: none; 
     color: var(--color-gray); 
     cursor: pointer; 
-    font-size: 0.85rem; 
-    margin-right: 0.5rem; 
+    font-size: 0.8rem; 
+    margin-right: 0.3rem; 
 }
-
-.action-btn:hover { 
-    color: var(--color-white); 
-}
-
 
 /* ==========================================================================
-   BARRE DE NAVIGATION BASSE (Mobile & Tablette portrait uniquement)
+   BARRE DE NAVIGATION BASSE (Mobile)
    ========================================================================== */
 .bottom-nav-bar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 70px;
+    height: 60px; /* Plus compacte en hauteur */
     background-color: var(--color-sidebar);
     border-top: 1px solid var(--color-border);
     display: flex;
     justify-content: space-around;
     align-items: center;
     z-index: 9999;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -208,16 +248,15 @@ html, body {
     justify-content: center;
     color: var(--color-gray);
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 500;
     flex: 1;
     height: 100%;
-    transition: color 0.2s ease;
 }
 
 .nav-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px; /* Icônes plus petites et proportionnées */
+    height: 20px;
     margin-bottom: 2px;
     stroke: currentColor;
     stroke-width: 2;
@@ -228,20 +267,15 @@ html, body {
     color: var(--color-primary);
 }
 
-.bottom-nav-item:hover {
-    color: var(--color-white);
-}
-
 
 /* ==========================================================================
-   MODE PC & GRANDES TABLETTES (À partir de 1024px)
-   Activation de votre grille asymétrique et masquage de la nav basse
+   MODE PC (À partir de 1024px) — Restauration du design large
    ========================================================================== */
 @media (min-width: 1024px) {
     html, body {
         height: 100vh;
         overflow: hidden;
-        padding-bottom: 0; /* Plus de marge basse nécessaire sur PC */
+        padding-bottom: 0;
     }
 
     .app-layout {
@@ -269,14 +303,16 @@ html, body {
         max-width: 1440px;
     }
 
-    /* Votre grille PC exacte avec le formulaire fixe à gauche et la liste à droite */
+    .card {
+        padding: 1.25rem; /* Restaure l'espace confortable sur PC */
+    }
+
     .produits-grid { 
         display: grid; 
         grid-template-columns: 380px 1fr; 
         gap: 1.5rem; 
     }
 
-    /* Suppression de la barre de navigation basse sur grand écran PC */
     .bottom-nav-bar {
         display: none !important;
     }
