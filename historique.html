@@ -30,22 +30,42 @@
         <!-- Zone principale -->
         <main class="main-content-area">
             <header class="page-header">
-                <h1>Historique & Traçabilité des Ventes</h1>
-                <p>Consultez les transactions et effectuez des corrections tracées si nécessaire.</p>
+                <h1>Historique & Traçabilité</h1>
+                <p>Consultez les transactions et effectuez des corrections tracées.</p>
             </header>
 
             <div id="histoAlert" class="alert-box" style="display:none;"></div>
 
-            <div class="card">
-                <div class="filter-bar" style="margin-bottom: 0.75rem;">
-                    <input type="text" id="searchSale" placeholder="Rechercher par produit ou caissière..." style="width:100%; padding: 0.5rem 0.65rem; background: var(--color-dark, #111114); border: 1px solid var(--color-border, #2A2A30); border-radius: 6px; color: #fff; font-size: 0.85rem;">
+            <!-- Barre de Recherche & Filtres -->
+            <div class="card search-filter-card">
+                <div class="filter-bar">
+                    <input type="text" id="searchSale" placeholder="Rechercher par produit, référence ou caissière...">
                 </div>
+                <div class="filters-row">
+                    <select id="filterStatus" class="filter-select">
+                        <option value="">Tous les statuts</option>
+                        <option value="valide">Valides</option>
+                        <option value="corrige">Corrigés</option>
+                    </select>
+                    <input type="date" id="filterDate" class="filter-date">
+                    <button type="button" id="resetFiltersBtn" class="btn btn-outline">Réinitialiser</button>
+                </div>
+            </div>
+
+            <!-- Liste des Historiques (Cartes mobiles & Tableau PC) -->
+            <div class="card history-container-card">
+                <div class="list-header">
+                    <h3>Journal des Transactions</h3>
+                    <span id="salesCountBadge" class="sales-count">0 opération(s)</span>
+                </div>
+                
+                <!-- Conteneur d'affichage adaptatif (Cartes en mobile / Table en PC) -->
                 <div class="table-wrapper">
-                    <table class="data-table">
+                    <table class="data-table desktop-table">
                         <thead>
                             <tr>
                                 <th>Date & Heure</th>
-                                <th>Produit</th>
+                                <th>Produit / Réf</th>
                                 <th>Qté</th>
                                 <th>Prix U</th>
                                 <th>Total</th>
@@ -55,31 +75,49 @@
                             </tr>
                         </thead>
                         <tbody id="salesTableBody">
-                            <tr><td colspan="8" style="text-align:center; color:var(--color-gray, #77777D);">Chargement de l'historique...</td></tr>
+                            <tr><td colspan="8" style="text-align:center; color:var(--color-gray);">Chargement de l'historique...</td></tr>
                         </tbody>
                     </table>
+                    
+                    <!-- Vue Cartes pour Mobile -->
+                    <div id="salesCardsContainer" class="sales-cards-container">
+                        <!-- Rempli dynamiquement par JS -->
+                    </div>
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Modale de Détails d'une Transaction -->
+    <div id="detailModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <h3>Détails de la Transaction</h3>
+            <div id="modalDetailBody" class="modal-detail-body">
+                <!-- Rempli dynamiquement -->
+            </div>
+            <div class="modal-actions">
+                <button type="button" id="closeDetailModalBtn" class="btn btn-outline">Fermer</button>
+            </div>
+        </div>
     </div>
 
     <!-- Modale de Correction de Vente -->
     <div id="correctModal" class="modal-overlay" style="display:none;">
         <div class="modal-content">
             <h3>Corriger / Annuler une vente</h3>
-            <p id="modalSaleInfo" style="margin-bottom:1rem; color:var(--color-gray, #77777D); font-size:0.9rem;"></p>
+            <p id="modalSaleInfo" style="margin-bottom:1rem; color:var(--color-gray); font-size:0.9rem;"></p>
             <div class="input-group" style="margin-bottom:1rem;">
-                <label for="correctionMotif" style="font-size:0.75rem; color:var(--color-gray, #77777D); display:block; margin-bottom:0.3rem;">Motif de la correction / annulation</label>
-                <input type="text" id="correctionMotif" placeholder="Ex: Erreur de saisie de quantité" required style="width:100%; padding:0.5rem; background:var(--color-dark, #111114); border:1px solid var(--color-border, #2A2A30); border-radius:6px; color:#fff; font-size:0.9rem;">
+                <label for="correctionMotif">Motif de la correction / annulation</label>
+                <input type="text" id="correctionMotif" placeholder="Ex: Erreur de saisie de quantité" required>
             </div>
-            <div class="modal-actions" style="display:flex; gap:0.5rem;">
-                <button type="button" id="modalCancelBtn" class="btn btn-outline" style="flex:1; padding:0.6rem; border:1px solid var(--color-border, #2A2A30); background:transparent; color:#fff; border-radius:6px; cursor:pointer;">Fermer</button>
-                <button type="button" id="modalConfirmBtn" class="btn btn-primary" style="flex:1; padding:0.6rem; background:#D71920; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Confirmer la correction</button>
+            <div class="modal-actions">
+                <button type="button" id="modalCancelBtn" class="btn btn-outline">Fermer</button>
+                <button type="button" id="modalConfirmBtn" class="btn btn-primary" style="background:#D71920;">Confirmer</button>
             </div>
         </div>
     </div>
 
-    <!-- BARRE DE NAVIGATION MOBILE UNIVERSELLE À 7 RUBRIQUES (Routes vérifiées) -->
+    <!-- BARRE DE NAVIGATION MOBILE UNIVERSELLE À 7 RUBRIQUES -->
     <nav class="bottom-nav-bar">
         <a href="historique.html" class="bottom-nav-item active">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
